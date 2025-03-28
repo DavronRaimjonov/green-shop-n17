@@ -3,6 +3,7 @@ import { setModalAuthorizationModalVisiblty } from "../../../redux/modalSlice";
 
 const BlogHeader = () => {
   const dispatch = useDispatch();
+  let a = 22;
   return (
     <div>
       <div className="w-full h-[300px] p-[50px] bg-[#F5F5F5] mt-3 flex max-2xl:h-[200px] max-md:h-[150px] justify-between">

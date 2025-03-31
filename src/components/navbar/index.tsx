@@ -12,7 +12,7 @@ const Navbar = () => {
   const dispatch = useReduxDispatch();
   const { pathname } = useLocation();
   const { isAuthorization, getCookie } = cookieInfo();
-  let user = getCookie("user");
+  const user = getCookie("user");
   const navigate = useNavigate();
   const { data } = useReduxSelctor((state) => state.shopSlice);
 
@@ -50,9 +50,11 @@ const Navbar = () => {
         </div>
         <button
           onClick={() => {
-            isAuthorization
-              ? navigate("/profile")
-              : dispatch(setModalAuthorizationModalVisiblty());
+            if (isAuthorization) {
+              navigate("/profile");
+            } else {
+              dispatch(setModalAuthorizationModalVisiblty());
+            }
           }}
           className="w-[100px] h-[35px] bg-[#46a358] text-white rounded-md flex items-center gap-2 justify-center"
         >

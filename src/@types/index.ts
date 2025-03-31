@@ -98,7 +98,7 @@ export interface AdviceMockItemType {
   img: string;
   border: boolean;
 }
-export interface AuthUser {
+export interface AuthUser2 {
   _id?: string;
   email?: string;
   name?: string;
@@ -114,7 +114,6 @@ export interface AuthUser {
   additional_street_address?: string;
   state?: string;
   zip?: string;
-
   permission?: {
     create: boolean;
     update: boolean;
@@ -200,6 +199,35 @@ export interface OrderType {
     total: number;
     method: string;
   };
-  shop_list: CartType[];
+  shop_list: CartTypeData[];
   _id: string;
+}
+
+export interface AdressType {
+  name: string;
+  surname: string;
+  country: string;
+  town: string;
+  street_adress: string;
+  additional_street_address: string;
+  state: string;
+  zip: string;
+  email: string;
+  phone_number: string;
+}
+export interface AccountDetails {
+  name: string;
+  surname: string;
+  email: string;
+  phone_number: string;
+  username: string;
+  profile_photo: {
+    file: {
+      response: {
+        image_url: {
+          url: string;
+        };
+      };
+    };
+  };
 }

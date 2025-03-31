@@ -10,7 +10,7 @@ const OrderModal = () => {
   const dispatch = useReduxDispatch();
   const { data, coupon } = useReduxSelctor((state) => state.shopSlice);
   const totalPrice = data.reduce((acc, value) => (acc += value.userPrice), 16);
-  let total = coupon ? totalPrice - (totalPrice * coupon) / 100 : totalPrice;
+  const total = coupon ? totalPrice - (totalPrice * coupon) / 100 : totalPrice;
   const navigate = useNavigate();
   const track = () => {
     dispatch(order());

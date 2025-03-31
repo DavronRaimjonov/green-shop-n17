@@ -7,7 +7,7 @@ import { HeartOutlined } from "@ant-design/icons";
 const ShopInfo: FC<QueryType<CartType>> = ({ data, isLoading, isError }) => {
   const size_style =
     "w-[28px] h-[28px] border border-[#EAEAEA] rounded-full hover:border-[#46A358] hover:text-[#46A358] transition-colors font-medium";
-  let loading = isLoading || isError;
+  const loading = isLoading || isError;
   return (
     <div>
       <div>

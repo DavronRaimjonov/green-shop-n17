@@ -46,7 +46,7 @@ const Rendering = () => {
       await navigator.clipboard.writeText(data?.content as string);
       notification.success({ message: "Copy data" });
     } catch (error) {
-      notification.success({ message: "Error copy data" });
+      notification.success({ message: `Error copy data ${error}` });
     }
   }
   const usersLoading: boolean = userLoading || userError;

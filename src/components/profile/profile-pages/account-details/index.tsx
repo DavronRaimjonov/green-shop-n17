@@ -1,14 +1,13 @@
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Upload } from "antd";
 import { cookieInfo } from "../../../../generic/cookies";
-import type { AuthUser } from "../../../../@types";
+import type { AccountDetails } from "../../../../@types";
 import { useEditDetails } from "../../../../hooks/useQueryHandler/useQueryAction";
-``
 const AccountDetails = () => {
   const { getCookie, setCookie } = cookieInfo();
-  const user: AuthUser = getCookie("user");
+  const user = getCookie("user");
   const { mutate } = useEditDetails();
-  const updageDetails = (e: any) => {
+  const updageDetails = (e: AccountDetails) => {
     mutate({
       ...e,
       _id: user._id,

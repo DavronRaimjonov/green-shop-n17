@@ -1,12 +1,9 @@
-import { cookieInfo } from "../../generic/cookies";
 import Hero from "./hero";
 import Info from "./info/info";
 import Posts from "./posts/posts";
 import StoreProducts from "./store-products";
 
 const HomeComponent = () => {
-  const { getCookie } = cookieInfo();
-  console.log(getCookie("user"));
   return (
     <>
       <div className="w-[90%] m-auto">

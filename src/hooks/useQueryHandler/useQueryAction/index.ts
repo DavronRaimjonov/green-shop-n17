@@ -20,7 +20,7 @@ export const useLoginMutate = () => {
     mutationFn: (data: object) =>
       axios({ url: "user/sign-in", method: "POST", body: data }),
     onSuccess: (data) => {
-      let { token, user } = data.data;
+      const { token, user } = data.data;
       localStorage.setItem("token", token);
       setCookie("user", user);
       notify("login");
@@ -39,7 +39,7 @@ export const useRegisterMutate = () => {
       axios({ url: "user/sign-up", method: "POST", body: data }),
     onSuccess: (data) => {
       console.log(data);
-      let { token, user } = data.data;
+      const { token, user } = data.data;
       localStorage.setItem("token", token);
       setCookie("user", user);
       notify("register");
@@ -67,7 +67,7 @@ export const useLoginWithGogole = () => {
       });
     },
     onSuccess: (data) => {
-      let { token, user } = data.data;
+      const { token, user } = data.data;
       localStorage.setItem("token", token);
       setCookie("user", user);
       notify("login_google");
@@ -90,7 +90,7 @@ export const useRegisterWithGogole = () => {
       });
     },
     onSuccess: (data) => {
-      let { token, user } = data.data;
+      const { token, user } = data.data;
       localStorage.setItem("token", token);
       setCookie("user", user);
       notify("login_google");
@@ -200,6 +200,36 @@ export const useDeleteOrder = () => {
     },
     onSuccess: () => {
       notify("order");
+    },
+  });
+};
+export const useIsLiked = () => {
+  const axios = useAxios();
+  const notify = notificationApi();
+
+  return useMutation({
+    mutationFn: (data: object) => {
+      return axios({ url: "user/create-wishlist", method: "POST", body: data });
+    },
+    onSuccess: () => {
+      notify("like");
+    },
+  });
+};
+export const useDeleteIsLiked = () => {
+  const axios = useAxios();
+  const notify = notificationApi();
+
+  return useMutation({
+    mutationFn: (data: { _id: string }) => {
+      return axios({
+        url: "user/delete-wishlist",
+        method: "DELETE",
+        body: data,
+      });
+    },
+    onSuccess: () => {
+      notify("dislike");
     },
   });
 };

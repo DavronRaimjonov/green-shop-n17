@@ -11,10 +11,10 @@ const ProcedForm = () => {
   const user: AuthUser = getCookie("user");
   const { data, coupon } = useReduxSelctor((state) => state.shopSlice);
   const totalPrice = data.reduce((acc, value) => (acc += value.userPrice), 16);
-  let total = coupon ? totalPrice - (totalPrice * coupon) / 100 : totalPrice;
+  const total = coupon ? totalPrice - (totalPrice * coupon) / 100 : totalPrice;
   const { mutate, isLoading } = useMakeOrderList();
   const order = (e: MakeOrderType) => {
-    let makeOrder = {
+    const makeOrder = {
       shop_list: data,
       billing_address: e,
       extra_shop_info: {
